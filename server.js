@@ -1,10 +1,13 @@
     const express = require('express');
     const mongoose = require('mongoose');
     const app = express()
+    const dotenv = require('dotenv');
     const Task = require('./models/task.model')
     app.use(express.json())
 
-    mongoose.connect('mongodb://localhost:27017/task_management', {
+    dotenv.config();
+
+    mongoose.connect(process.env.MONGODB_URI, {
     }).then(() => {
         console.log('Connected to the db')
     })
